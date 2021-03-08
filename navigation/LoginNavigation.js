@@ -24,7 +24,7 @@ export default function LoginNavigation() {
           <Stack.Screen
             name="Login"
             component={Login}
-            options={{ headerShown: true }}
+            options={{ headerShown: false }}
           />
           <Stack.Screen
             name="SignUp"

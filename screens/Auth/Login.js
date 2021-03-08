@@ -14,20 +14,28 @@ export default class Login extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={{ fontSize: 80, fontFamily: "Billabong", margin: 30 }}>
+        <Text
+          style={{
+            fontSize: 80,
+            fontFamily: "Billabong",
+            margin: 30,
+            marginVertical: 60,
+          }}
+        >
           Instagram
         </Text>
-        <View style={{ marginTop: 100 }}>
+        <View style={{ marginTop: 80 }}>
           <TextInput
             style={{
               height: 50,
               width: screenWidth * 0.9,
               backgroundColor: "#eee",
               paddingHorizontal: 20,
-              borderRadius: 10,
+              borderRadius: 8,
               margin: 10,
             }}
-            placeholder={"Email"}
+            placeholder={"Email Address"}
+            placeholderTextColor={"grey"}
           />
           <TextInput
             style={{
@@ -35,10 +43,12 @@ export default class Login extends React.Component {
               width: screenWidth * 0.9,
               backgroundColor: "#eee",
               paddingHorizontal: 20,
-              borderRadius: 10,
+              borderRadius: 8,
               margin: 10,
             }}
+            secureTextEntry
             placeholder={"Password"}
+            placeholderTextColor={"grey"}
           />
         </View>
         <View
@@ -46,15 +56,15 @@ export default class Login extends React.Component {
             width: screenWidth,
             justifyContent: "center",
             alignItems: "center",
-            margin: 20,
+            margin: 10,
           }}
         >
           <TouchableOpacity
             style={{
-              width: screenWidth * 0.6,
+              width: screenWidth * 0.9,
               heigh: 50,
-              padding: 15,
-              borderRadius: 30,
+              padding: 12,
+              borderRadius: 8,
               backgroundColor: "#0095f6",
               justifyContent: "center",
               alignItems: "center",
@@ -64,10 +74,25 @@ export default class Login extends React.Component {
               Log in
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={{ alignItems: "center" }}>
-            <Text>Don't have an account?</Text>
-            <Text>Sign Up</Text>
-          </TouchableOpacity>
+
+          <View
+            style={{
+              alignItems: "center",
+              margin: 10,
+              flexDirection: "row",
+              position: "absolute",
+              bottom: -170,
+            }}
+          >
+            <Text style={{ fontSize: 15 }}>Don't have an account? </Text>
+            <TouchableOpacity>
+              <Text
+                style={{ fontSize: 15, fontWeight: "bold", color: "#0095f6" }}
+              >
+                Sign Up
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     );
