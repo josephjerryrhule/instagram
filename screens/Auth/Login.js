@@ -8,9 +8,13 @@ import {
   Dimensions,
 } from "react-native";
 
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { updateEmail, updatePassword } from "../../actions/user";
+
 const screenHeight = Dimensions.get("window").height;
 const screenWidth = Dimensions.get("window").width;
-export default class Login extends React.Component {
+class Login extends React.Component {
   render() {
     return (
       <View style={styles.container}>
@@ -36,6 +40,8 @@ export default class Login extends React.Component {
             }}
             placeholder={"Email Address"}
             placeholderTextColor={"grey"}
+            value={this.props.user.email}
+            onChangeText={(input) => this.props.updateEmail(input)}
           />
           <TextInput
             style={{
@@ -49,6 +55,8 @@ export default class Login extends React.Component {
             secureTextEntry
             placeholder={"Password"}
             placeholderTextColor={"grey"}
+            value={this.props.user.password}
+            onChangeText={(input) => this.props.updatePassword(input)}
           />
         </View>
         <View
@@ -85,7 +93,9 @@ export default class Login extends React.Component {
             }}
           >
             <Text style={{ fontSize: 15 }}>Don't have an account? </Text>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("SignUp")}
+            >
               <Text
                 style={{ fontSize: 15, fontWeight: "bold", color: "#0095f6" }}
               >
@@ -98,6 +108,16 @@ export default class Login extends React.Component {
     );
   }
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ updateEmail, updatePassword }, dispatch);
+};
+
+const mapStateToProps = (state) => {
+  return { user: state.user, post: state.post };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
 
 const styles = StyleSheet.create({
   container: {

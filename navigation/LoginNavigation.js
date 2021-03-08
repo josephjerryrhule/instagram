@@ -29,7 +29,7 @@ export default function LoginNavigation() {
           <Stack.Screen
             name="SignUp"
             component={SignUp}
-            options={{ headerShown: false }}
+            options={{ headerShown: true }}
           />
         </Stack.Navigator>
       </NavigationContainer>
