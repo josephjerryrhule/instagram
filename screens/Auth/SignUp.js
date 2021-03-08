@@ -10,7 +10,12 @@ import {
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { updateEmail, updatePassword } from "../../actions/user";
+import {
+  updateEmail,
+  updatePassword,
+  updateUsername,
+  signup,
+} from "../../actions/user";
 
 const screenHeight = Dimensions.get("window").height;
 const screenWidth = Dimensions.get("window").width;
@@ -20,8 +25,11 @@ class SignUp extends React.Component {
   };
 
   onSignupPress = () => {
-    if (this.props.user.password == this.state.repeat) {
-      alert("Passwords match");
+    if (
+      this.props.user.password == this.state.repeat &&
+      this.props.user.username !== ""
+    ) {
+      this.props.signup();
     } else {
       alert("Passwords do not match");
     }
@@ -115,7 +123,10 @@ class SignUp extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ updateEmail, updatePassword }, dispatch);
+  return bindActionCreators(
+    { updateEmail, updatePassword, updateUsername, signup },
+    dispatch
+  );
 };
 
 const mapStateToProps = (state) => {
