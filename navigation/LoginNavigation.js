@@ -7,6 +7,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import Login from "../screens/Auth/Login";
 import SignUp from "../screens/Auth/SignUp";
+import Welcome from "../screens/Auth/Welcome";
+import StackNavigator from "./StackNavigator";
 
 const Stack = createStackNavigator();
 
@@ -22,6 +24,11 @@ export default function LoginNavigation() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
+            name="Welcome"
+            component={Welcome}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
             name="Login"
             component={Login}
             options={{ headerShown: false }}
@@ -31,6 +38,7 @@ export default function LoginNavigation() {
             component={SignUp}
             options={{ headerShown: true }}
           />
+          <Stack.Screen name="StackNavigator" component={StackNavigator} />
         </Stack.Navigator>
       </NavigationContainer>
     );

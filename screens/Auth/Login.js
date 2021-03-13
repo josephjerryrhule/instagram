@@ -10,7 +10,7 @@ import {
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { updateEmail, updatePassword } from "../../actions/user";
+import { updateEmail, updatePassword, login } from "../../actions/user";
 
 const screenHeight = Dimensions.get("window").height;
 const screenWidth = Dimensions.get("window").width;
@@ -77,6 +77,7 @@ class Login extends React.Component {
               justifyContent: "center",
               alignItems: "center",
             }}
+            onPress={() => this.props.login()}
           >
             <Text style={{ color: "white", fontWeight: "bold", fontSize: 20 }}>
               Log in
@@ -110,7 +111,7 @@ class Login extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ updateEmail, updatePassword }, dispatch);
+  return bindActionCreators({ updateEmail, updatePassword, login }, dispatch);
 };
 
 const mapStateToProps = (state) => {
